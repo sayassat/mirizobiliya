@@ -5,29 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
     public function create()
     {
-        return view('admin.products.create');
-    }
+        $categories = Category::all();
 
-    public function store(Request $request)
-    {
-        // Validate the request
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            // Add more validation rules as needed
-        ]);
-
-        // Create a new product
-        Product::create($validatedData);
-
-        // Redirect to a success page or product listing
-        return redirect()->route('products.create')->with('success', 'Product created successfully.');
+        return view('admin.products.create', ['categories' => $categories]);
     }
 
     public function index()

@@ -6,6 +6,12 @@
     <title>@yield('title', 'Admin Panel')</title>
     <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/jquery-ui.min.css') }}">
+    <style>
+    	.products-table-desc {
+    		max-height: 100px;
+    		overflow-y: scroll;
+    	}
+    </style>
 </head>
 <body>
     <div id="admin-app" class="container">
@@ -18,6 +24,9 @@
 				<ul class="nav">
 					<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="{{ route('admin.admin') }}">Главная</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('categories.categories') }}">Категории</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('products.products') }}">Товары</a>
@@ -34,7 +43,7 @@
 				</div>
 			</div>
 		</nav>
-        <div class="bg-body-tertiary mt-4 pt-3">
+        <div class="bg-body-tertiary mt-4 p-3">
         	@yield('content')
         </div>
     </div>

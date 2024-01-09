@@ -45,6 +45,7 @@
 			<div class="header-menu flexed">
 				<nav class="header-menu-nav">
 					<ul class="hm-nav-list flexed">
+						<li class="hmn-list-item"><a class="hmnl-item-link" href="#">Услуги</a></li>
 						<li class="hmn-list-item"><a class="hmnl-item-link" href="/catalogue">Каталог</a></li>
 						<li class="hmn-list-item"><a class="hmnl-item-link" href="#">О нас</a></li>
 						<li class="hmn-list-item"><a class="hmnl-item-link" href="#">Акции</a></li>
@@ -61,7 +62,7 @@
 							<use xlink:href="#cart"></use>
 						</svg>
 					</a>
-					<a class="hm-action-btm" href="#">
+					<a class="hm-action-btm" href="/login">
 						<svg class="svg-icon account">
 							<use xlink:href="#account"></use>
 						</svg>

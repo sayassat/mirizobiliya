@@ -9,21 +9,21 @@
 		<section class="product_main-general flexed">
 			<div class="product_main-general-pics">
 				<ul class="pmg-pics-side">
-					<li class="pmgp-side-item" style="background-image: url(pic/1.png)" data-index="0"><img src="pic/1.png" alt=""></li>
-					<li class="pmgp-side-item" style="background-image: url(pic/2.png)" data-index="1"><img src="pic/2.png" alt=""></li>
-					<li class="pmgp-side-item" style="background-image: url(pic/3.png)" data-index="2"><img src="pic/3.png" alt=""></li>
-					<li class="pmgp-side-item" style="background-image: url(pic/4.png)" data-index="3"><img src="pic/4.png" alt=""></li>
+					<li class="pmgp-side-item" style="background-image: url(../../pic/1.png)" data-index="0"><img src="../../pic/1.png" alt=""></li>
+					<li class="pmgp-side-item" style="background-image: url(../pic/2.png)" data-index="1"><img src="../pic/2.png" alt=""></li>
+					<li class="pmgp-side-item" style="background-image: url(../pic/3.png)" data-index="2"><img src="../pic/3.png" alt=""></li>
+					<li class="pmgp-side-item" style="background-image: url(../pic/4.png)" data-index="3"><img src="../pic/4.png" alt=""></li>
 				</ul>
 				<ul class="pmg-pics-list">
-					<li class="pmgp-list-item" style="background-image: url(pic/1.png)"><img src="pic/1.png" alt=""></li>
-					<li class="pmgp-list-item" style="background-image: url(pic/2.png)"><img src="pic/2.png" alt=""></li>
-					<li class="pmgp-list-item" style="background-image: url(pic/3.png)"><img src="pic/3.png" alt=""></li>
-					<li class="pmgp-list-item" style="background-image: url(pic/4.png)"><img src="pic/4.png" alt=""></li>
+					<li class="pmgp-list-item" style="background-image: url(../pic/1.png)"><img src="../pic/1.png" alt=""></li>
+					<li class="pmgp-list-item" style="background-image: url(../pic/2.png)"><img src="../pic/2.png" alt=""></li>
+					<li class="pmgp-list-item" style="background-image: url(../pic/3.png)"><img src="../pic/3.png" alt=""></li>
+					<li class="pmgp-list-item" style="background-image: url(../pic/4.png)"><img src="../pic/4.png" alt=""></li>
 				</ul>
 			</div>
 			<div class="product_main-general-desc">
-				<h1>Продукт</h1>
-				<div class="pmg-desc-price">10 000₸</div>
+				<h1>{{ $product->name }}</h1>
+				<div class="pmg-desc-price">{{ $product->price }} ₸</div>
 				<div class="pmg-desc-feedback">
 					<div class="pmgd-feedback-top">
 						<div class="pmgdf-top-rating">
@@ -45,7 +45,7 @@
 						</div>
 						<div class="pmgdf-top-count"><span>1</span><span> отзыв</span></div>
 					</div>
-					<p class="pmgd-feedback-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis.</p>
+					<p class="pmgd-feedback-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed velit neque, rhoncus in pharetra pellentesque, aliquet id purus. Pellentesque non volutpat ex. Donec in mollis nulla.</p>
 				</div>
 				<div class="pmg-desc-actions">
 					<div class="pmgd-actions-number"><button class="pmgda-number-less">-</button><span class="pmgda-number-value">1</span><input type="hidden" id="products-number" name="" value="1"><button class="pmgda-number-more">+</button></div><button class="pmgd-actions-add">Добавить в корзину</button>
@@ -66,7 +66,7 @@
 				</div>
 				<ul class="pmg-desc-details">
 					<li class="pmgd-details-item"><strong class="pmgdd-item-name">SKU:</strong><span class="pmgdd-item-val">12</span></li>
-					<li class="pmgd-details-item"><strong class="pmgdd-item-name">Категория:</strong><span class="pmgdd-item-val">Текстиль</span></li>
+					<li class="pmgd-details-item"><strong class="pmgdd-item-name">Категория:</strong><span class="pmgdd-item-val">{{ $product->categories->name }}</span></li>
 				</ul>
 			</div>
 		</section>
@@ -77,7 +77,7 @@
 				<li class="pmi-tabs-item"><a class="pmit-item-link" href="#item-3">Отзывы (1)</a></li>
 			</ul>
 			<div class="pm-info-body active" id="item-1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.</p>
+				<p>{{ $product->description }}</p>
 			</div>
 			<div class="pm-info-body" id="item-2">
 				<ul class="pmi-body-list">
@@ -93,72 +93,18 @@
 			<h2 class="pm-relate-heading">Схожие товары</h2>
 			<div class="pm-relate-show">
 				<ul class="home_catalogue-body pmr-show-list">
+					@foreach ($products as $product)
 					<li class="hc-body-items">
 						<div class="hcb-items-card">
 							<div class="hcbi-card-img">
 								<div class="hcbic-img-status">
-									<div class="hcbici-status-item">- %21</div>
-									<div class="hcbici-status-item">Нет в наличии</div>
-								</div><a class="hcbic-img-link" href="#"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
+									@if ($product->qty == 0) <div class="hcbici-status-item">Нет в наличии</div> @endif
+								</div><a class="hcbic-img-link" href="/product/{{ $product->id }}"><img class="hcbic-img-item" src="../pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
 							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="#">Товар</a><span class="hcbic-info-price">5 000₸</span></div>
+							<div class="hcbi-card-info"><a class="hcbic-info-name" href="/product/{{ $product->id }}">{{ $product->name }}</a><span class="hcbic-info-price">{{ $product->price }} ₸</span></div>
 						</div>
 					</li>
-					<li class="hc-body-items">
-						<div class="hcb-items-card">
-							<div class="hcbi-card-img">
-								<div class="hcbic-img-status">
-									<div class="hcbici-status-item">- %21</div>
-									<div class="hcbici-status-item">Нет в наличии</div>
-								</div><a class="hcbic-img-link" href="#"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
-							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="#">Товар</a><span class="hcbic-info-price">15 000₸</span></div>
-						</div>
-					</li>
-					<li class="hc-body-items">
-						<div class="hcb-items-card">
-							<div class="hcbi-card-img">
-								<div class="hcbic-img-status">
-									<div class="hcbici-status-item">- %21</div>
-									<div class="hcbici-status-item">Нет в наличии</div>
-								</div><a class="hcbic-img-link" href="#"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
-							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="#">Товар</a><span class="hcbic-info-price">10 000₸</span></div>
-						</div>
-					</li>
-					<li class="hc-body-items">
-						<div class="hcb-items-card">
-							<div class="hcbi-card-img">
-								<div class="hcbic-img-status">
-									<div class="hcbici-status-item">- %21</div>
-									<div class="hcbici-status-item">Нет в наличии</div>
-								</div><a class="hcbic-img-link" href="#"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
-							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="#">Товар</a><span class="hcbic-info-price">10 000₸</span></div>
-						</div>
-					</li>
-					<li class="hc-body-items">
-						<div class="hcb-items-card">
-							<div class="hcbi-card-img">
-								<div class="hcbic-img-status">
-									<div class="hcbici-status-item">- %21</div>
-									<div class="hcbici-status-item">Нет в наличии</div>
-								</div><a class="hcbic-img-link" href="#"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
-							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="#">Товар</a><span class="hcbic-info-price">10 000₸</span></div>
-						</div>
-					</li>
-					<li class="hc-body-items">
-						<div class="hcb-items-card">
-							<div class="hcbi-card-img">
-								<div class="hcbic-img-status">
-									<div class="hcbici-status-item">- %21</div>
-									<div class="hcbici-status-item">Нет в наличии</div>
-								</div><a class="hcbic-img-link" href="#"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
-							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="#">Товар</a><span class="hcbic-info-price">15 000₸</span></div>
-						</div>
-					</li>
+					@endforeach
 				</ul>
 			</div>
 		</section>
