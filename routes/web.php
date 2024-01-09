@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\IndexController;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -23,9 +24,11 @@ use App\Models\Product;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 // Route::get('/catalogue', function () {
 //     return view('catalogue');
