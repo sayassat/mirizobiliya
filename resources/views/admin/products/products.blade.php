@@ -3,6 +3,12 @@
 @section('content')
     <h1 class="fs-3 text-center mb-3">Список товаров</h1>
 
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <div class="mb-3 text-end">
         <a href="products/create" class="btn btn-sm btn-primary">Добавить</a>
     </div>
@@ -16,6 +22,8 @@
                 <th class="text-center">Описание товара</th>
                 <th class="text-center">Цена</th>
                 <th class="text-center">В наличии</th>
+                <th class="text-center">Картинка</th>
+                <th class="text-center">Действия</th>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +38,14 @@
                         </div>
                     </td>
                     <td class="text-end">{{ $product->price }}</td>
-                    <td class="text-end">{{ $product->qty }}</td>
+                    <td class="text-center">{{ $product->qty }}</td>
+                    <td class="text-center">
+                        <img src="../pic/{{ $product->pic }}" alt="" width="100">
+                    </td>
+                    <td class="text-center text-nowrap">
+                        <a href="{{ url('admin/products/edit/'.$product->id) }}" class="btn btn-success btn-sm">Обновить</a>
+                        <button class="btn btn-danger btn-sm">Удалить</button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

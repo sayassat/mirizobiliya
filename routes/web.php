@@ -12,6 +12,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\IndexController;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,16 +55,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::get('/products', [ProductController::class, 'index'])->name('products.products');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/products/create', function(){
+    Route::post('/products/create', function(Request $request){
         $product = new Product();
         $product->name = request('name');
         $product->categories_id = request('category');
         $product->description = request('description');
         $product->price = request('price');
         $product->qty = request('quantity');
+        $picture = $request->file('picture');
+        $picture->move('pic', $picture->getClientOriginalName());
+        $product->pic = $picture->getClientOriginalName();
         $product->save();
-        return redirect('admin/products');
+        return redirect('admin/products')->with('status', "Товар успешно добавлен");
     });
+    Route::get('/products/edit/{id}',[ProductController::class, 'edit']);
+    Route::put('/products/update/{id}',[ProductController::class, 'update']);
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');

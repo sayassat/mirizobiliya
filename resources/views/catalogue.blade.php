@@ -68,7 +68,7 @@
 							<div class="hcbi-card-img">
 								<div class="hcbic-img-status">
 									@if ($product->qty == 0) <div class="hcbici-status-item">Нет в наличии</div> @endif
-								</div><a class="hcbic-img-link" href="/product/{{ $product->id }}"><img class="hcbic-img-item" src="pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
+								</div><a class="hcbic-img-link" href="/product/{{ $product->id }}"><img class="hcbic-img-item" @if ($product->pic == NULL) src="pic/2.png" @else src="pic/{{ $product->pic }}" @endif alt="{{ $product->name }}"></a><button class="hcbic-img-btn">Добавить в корзину</button>
 							</div>
 							<div class="hcbi-card-info"><a class="hcbic-info-name" href="/product/{{ $product->id }}">{{ $product->name }}</a><span class="hcbic-info-price">{{ $product->price }} ₸</span></div>
 						</div>

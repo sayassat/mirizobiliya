@@ -9,13 +9,13 @@
 		<section class="product_main-general flexed">
 			<div class="product_main-general-pics">
 				<ul class="pmg-pics-side">
-					<li class="pmgp-side-item" style="background-image: url(../../pic/1.png)" data-index="0"><img src="../../pic/1.png" alt=""></li>
+					<li class="pmgp-side-item" style="background-image: url(../pic/{{ $product->pic }})" data-index="0"><img src="../../pic/{{ $product->pic }}" alt=""></li>
 					<li class="pmgp-side-item" style="background-image: url(../pic/2.png)" data-index="1"><img src="../pic/2.png" alt=""></li>
 					<li class="pmgp-side-item" style="background-image: url(../pic/3.png)" data-index="2"><img src="../pic/3.png" alt=""></li>
 					<li class="pmgp-side-item" style="background-image: url(../pic/4.png)" data-index="3"><img src="../pic/4.png" alt=""></li>
 				</ul>
 				<ul class="pmg-pics-list">
-					<li class="pmgp-list-item" style="background-image: url(../pic/1.png)"><img src="../pic/1.png" alt=""></li>
+					<li class="pmgp-list-item" style="background-image: url(../pic/{{ $product->pic }})"><img src="../pic/{{ $product->pic }}" alt=""></li>
 					<li class="pmgp-list-item" style="background-image: url(../pic/2.png)"><img src="../pic/2.png" alt=""></li>
 					<li class="pmgp-list-item" style="background-image: url(../pic/3.png)"><img src="../pic/3.png" alt=""></li>
 					<li class="pmgp-list-item" style="background-image: url(../pic/4.png)"><img src="../pic/4.png" alt=""></li>
@@ -99,7 +99,7 @@
 							<div class="hcbi-card-img">
 								<div class="hcbic-img-status">
 									@if ($product->qty == 0) <div class="hcbici-status-item">Нет в наличии</div> @endif
-								</div><a class="hcbic-img-link" href="/product/{{ $product->id }}"><img class="hcbic-img-item" src="../pic/card.png" alt="Товар"></a><button class="hcbic-img-btn">Добавить в корзину</button>
+								</div><a class="hcbic-img-link" href="/product/{{ $product->id }}"><img class="hcbic-img-item" @if ($product->pic == NULL) src="../pic/2.png" @else src="../pic/{{ $product->pic }}" @endif alt="{{ $product->name }}"></a><button class="hcbic-img-btn">Добавить в корзину</button>
 							</div>
 							<div class="hcbi-card-info"><a class="hcbic-info-name" href="/product/{{ $product->id }}">{{ $product->name }}</a><span class="hcbic-info-price">{{ $product->price }} ₸</span></div>
 						</div>

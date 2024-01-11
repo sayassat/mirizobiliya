@@ -43,7 +43,7 @@
 				</div>
 			</div>
 		</nav>
-        <div class="bg-body-tertiary mt-4 p-3">
+        <div class="bg-body-tertiary mt-4 p-3 pb-5">
         	@yield('content')
         </div>
     </div>
