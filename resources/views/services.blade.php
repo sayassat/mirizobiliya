@@ -6,7 +6,7 @@
 <!-- CATALOGUE -->
 <section class="catalogue_main">
 	<div class="catalogue_main-in wrapper">
-		<h2 class="catalogue_main-heading">Каталог товаров</h2>
+		<h2 class="catalogue_main-heading">Услуги</h2>
 		<div class="catalogue_main-body">
 			<div class="cm-body-filters">
 				<div class="cmb-filters-search"><input type="text" name="" value="" placeholder="Поиск"><i class="icon cmbf-search-icon"><svg class="svg-icon loupe">
@@ -15,13 +15,13 @@
 				<div class="cmb-filters-lists">
 					<div class="cmbf-lists-item">
 						<div class="my_dropdown-container">
-							<div class="my_dropdown-main"><span class="my_dropdown-selected">Категория 1</span><i class="icon cmbfl-item-icon"><svg class="svg-icon half-arrow">
+							<div class="my_dropdown-main"><span class="my_dropdown-selected">Услуга 1</span><i class="icon cmbfl-item-icon"><svg class="svg-icon half-arrow">
 										<use xlink:href="#half-arrow"></use>
 									</svg></i></div>
 							<ul class="my_dropdown-list">
-								<li class="my_dropdown-item" data-value="1">Категория 1</li>
-								<li class="my_dropdown-item" data-value="2">Категория 2</li>
-								<li class="my_dropdown-item" data-value="3">Категория 3</li>
+								<li class="my_dropdown-item" data-value="1">Услуга 1</li>
+								<li class="my_dropdown-item" data-value="2">Услуга 2</li>
+								<li class="my_dropdown-item" data-value="3">Услуга 3</li>
 							</ul><input class="my_dropdown-input" type="hidden" name="country" value="">
 						</div>
 					</div>

@@ -6,13 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-class CatalogueController extends Controller
+class ServicesController extends Controller
 {
-
     public function index()
     {
-        $products = Product::where('type','Товар')->get();
+        $products = Product::where('type','Услуга')->get();
 
-        return view('catalogue', ['products' => $products]);
+        return view('services', ['products' => $products]);
     }
 }

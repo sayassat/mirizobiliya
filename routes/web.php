@@ -5,11 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ServicesController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -34,6 +36,8 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 // Route::get('/catalogue', function () {
 //     return view('catalogue');
 // });
+
+Route::get('/services', [ServicesController::class, 'index'])->name('services');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
 
@@ -62,9 +66,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         $product->description = request('description');
         $product->price = request('price');
         $product->qty = request('quantity');
-        $picture = $request->file('picture');
-        $picture->move('pic', $picture->getClientOriginalName());
-        $product->pic = $picture->getClientOriginalName();
+        if ($request->file('picture')) {
+            $picture = $request->file('picture');
+            $picture->move('pic', $picture->getClientOriginalName());
+            $product->pic = $picture->getClientOriginalName();
+        }
+        $product->type = request('type');
         $product->save();
         return redirect('admin/products')->with('status', "Товар успешно добавлен");
     });
@@ -79,6 +86,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         $category->save();
         return redirect('admin/categories');
     });
+
+    Route::get('/banners',[BannerController::class, 'index'])->name('banners.banners');
+    Route::get('/banners/create', [BannerController::class, 'create'])->name('banners.create');
+    Route::post('/banners/create', [BannerController::class, 'add']);
+    Route::get('/banners/edit/{id}',[BannerController::class, 'edit']);
+    Route::put('/banners/update/{id}',[BannerController::class, 'update']);
 });
 
 Route::get('/logout', 'LoginController@logout')->name('logout');

@@ -38,9 +38,12 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->qty = $request->input('quantity');
-        $picture = $request->file('picture');
-        $picture->move('pic', $picture->getClientOriginalName());
-        $product->pic = $picture->getClientOriginalName();
+        if ($request->file('picture')) {
+            $picture = $request->file('picture');
+            $picture->move('pic', $picture->getClientOriginalName());
+            $product->pic = $picture->getClientOriginalName();
+        }
+        $product->type = $request->input('type');
         $product->update();
         return redirect('admin/products')->with('status', "Данные успешно обновлены");
     }

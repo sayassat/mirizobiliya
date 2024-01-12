@@ -45,7 +45,7 @@
 			<div class="header-menu flexed">
 				<nav class="header-menu-nav">
 					<ul class="hm-nav-list flexed">
-						<li class="hmn-list-item"><a class="hmnl-item-link" href="#">Услуги</a></li>
+						<li class="hmn-list-item"><a class="hmnl-item-link" href="/services">Услуги</a></li>
 						<li class="hmn-list-item"><a class="hmnl-item-link" href="/catalogue">Каталог</a></li>
 						<li class="hmn-list-item"><a class="hmnl-item-link" href="#">О нас</a></li>
 						<li class="hmn-list-item"><a class="hmnl-item-link" href="#">Акции</a></li>

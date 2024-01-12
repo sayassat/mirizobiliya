@@ -32,6 +32,9 @@
 						<a class="nav-link" href="{{ route('products.products') }}">Товары</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="{{ route('banners.banners') }}">Баннеры</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="#">Пользователи</a>
 					</li>
 					<li class="nav-item">

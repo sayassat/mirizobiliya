@@ -642,19 +642,17 @@ a.ft-links-item:hover {
 
 .home_catalogue-body {
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: calc(100% + 20px);
-  margin-left: -10px;
+  justify-content: start;
 }
 
 .hc-body-items {
   margin-right: 10px;
   margin-left: 10px;
-  margin-bottom: 82px;
+  margin-bottom: 63px;
 }
 
 .hcb-items-card {
-  max-width: 377px;
+  max-width: 290px;
 }
 
 .hcbi-card-img {
@@ -664,7 +662,7 @@ a.ft-links-item:hover {
 
 a.hcbic-img-link {
   display: block;
-  height: 380px;
+  height: 292px;
   border-radius: 8px;
   overflow: hidden;
 }

@@ -38,6 +38,13 @@
 			<input type="file" class="form-control" id="picture" name="picture" value="{{ $product->pic }}">
 			<div id="nameHelp" class="form-text">Загрузите картинку нового товара.</div>
 		</div>
+		<div class="mb-3">
+			<label for="type" class="form-label">Выберите тип</label>
+			<select class="form-select" aria-label="Default select example" id="type" name="type">
+				<option value="Товар">Товар</option>
+				<option value="Услуга">Услуга</option>
+			</select>
+		</div>
 		<div class="mt-6 text-center">
 			<button type="submit" class="btn btn-primary">Обновить данные</button>
 		</div>

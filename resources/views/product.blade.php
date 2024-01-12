@@ -23,7 +23,7 @@
 			</div>
 			<div class="product_main-general-desc">
 				<h1>{{ $product->name }}</h1>
-				<div class="pmg-desc-price">{{ $product->price }} ₸</div>
+				<div class="pmg-desc-price">{{ $product->price }}</div>
 				<div class="pmg-desc-feedback">
 					<div class="pmgd-feedback-top">
 						<div class="pmgdf-top-rating">
@@ -101,7 +101,7 @@
 									@if ($product->qty == 0) <div class="hcbici-status-item">Нет в наличии</div> @endif
 								</div><a class="hcbic-img-link" href="/product/{{ $product->id }}"><img class="hcbic-img-item" @if ($product->pic == NULL) src="../pic/2.png" @else src="../pic/{{ $product->pic }}" @endif alt="{{ $product->name }}"></a><button class="hcbic-img-btn">Добавить в корзину</button>
 							</div>
-							<div class="hcbi-card-info"><a class="hcbic-info-name" href="/product/{{ $product->id }}">{{ $product->name }}</a><span class="hcbic-info-price">{{ $product->price }} ₸</span></div>
+							<div class="hcbi-card-info"><a class="hcbic-info-name" href="/product/{{ $product->id }}">{{ $product->name }}</a><span class="hcbic-info-price">{{ $product->price }}</span></div>
 						</div>
 					</li>
 					@endforeach

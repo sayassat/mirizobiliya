@@ -23,6 +23,7 @@
                 <th class="text-center">Цена</th>
                 <th class="text-center">В наличии</th>
                 <th class="text-center">Картинка</th>
+                <th class="text-center">Тип</th>
                 <th class="text-center">Действия</th>
             </tr>
         </thead>
@@ -42,6 +43,7 @@
                     <td class="text-center">
                         <img src="../pic/{{ $product->pic }}" alt="" width="100">
                     </td>
+                    <td class="text-center">{{ $product->type }}</td>
                     <td class="text-center text-nowrap">
                         <a href="{{ url('admin/products/edit/'.$product->id) }}" class="btn btn-success btn-sm">Обновить</a>
                         <button class="btn btn-danger btn-sm">Удалить</button>
